@@ -20,6 +20,26 @@ db.serialize(() => {
             date TEXT NOT NULL
         )
     `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS investment_operations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            investment_id INTEGER,
+            ticker TEXT NOT NULL,
+            quantity REAL NOT NULL,
+            price REAL NOT NULL,
+            date TEXT NOT NULL
+        )
+    `);
+
+    db.run(`
+        CREATE TABLE IF NOT EXISTS investment_provents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            investment_id INTEGER,
+            amount REAL NOT NULL,
+            date TEXT NOT NULL
+        )
+    `);
 });
 
 module.exports = db;
